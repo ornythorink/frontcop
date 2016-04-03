@@ -3,3 +3,11 @@
                                                                                                                         
  Use the --force option if the server process terminated unexpectedly to start a new web server process.                
 
+
+ [OK] Server running on http://127.0.0.1:8080                                                                           
+
+ // Quit the server with CONTROL-C.
+
+ [OK] Server running on http://127.0.0.1:8080                                                                           
+
+ // Quit the server with CONTROL-C.

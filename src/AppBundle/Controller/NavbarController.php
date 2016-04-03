@@ -17,8 +17,6 @@ class NavbarController extends Controller
         $response = $client->get('http://127.0.0.1:8000/api/root/categories');
         $rootCategories = json_decode($response->getBody()->getContents() ,true );
 
-        \Doctrine\Common\Util\Debug::dump($rootCategories);
-
 
         $categories = array();
         $form = $this->createFormBuilder()
