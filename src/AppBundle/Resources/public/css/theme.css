@@ -1,0 +1,173 @@
+/* deploy3 */
+body {
+    padding-top: 70px;
+
+}
+#tagcloud {
+    width:80%;
+}
+
+
+.box{
+    width: 100%;
+}
+
+.navbar-brand{
+    padding: 0 0 0 5px;
+}
+
+.cartouche {
+    padding: 0 0 0 0;
+    min-height: 480px;
+    max-height:480px;
+}
+
+.panel-default{
+
+    /*border-color: #000;*/
+}
+.panel-default .panel-heading
+{
+    text-transform: uppercase;
+    color: #FFF;
+    background-color:   #949494;
+    opacity: .8;
+    /* For IE 5-7 */
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    /* For IE 8 */
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    height:70px;
+    /*border-color: #000;*/
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    box-sizing: border-box;
+}
+
+.side .panel-heading{
+    height:40px;
+}
+
+.panel-footer.foot {
+    background-color:   #FFFFFF;
+}
+
+.brand{
+    padding:5px 5px 5px 5px;
+    color: #FFF;
+    background: #7ECA6D;
+    font-weight:bold;
+    max-height: 30px;
+}
+
+.image{
+    min-height:220px;
+}
+
+.cartouche div .img-responsive{
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    max-height:220px;
+}
+
+.captions ul{
+    padding:0px;
+    /*border: 1px solid #CCCCCC;*/
+}
+
+
+figure{
+    max-height:380px;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0 0 0 0 ;
+}
+
+figure .img-responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 378px;
+    padding: 0 0 0 0 ;
+}
+
+.logostorebox {
+    padding-bottom: 5px; /* encore utile */
+
+}
+
+.logostorebox img{
+    /*border: 1px solid #CCC;*/
+}
+
+.lowest{
+    padding-top:5px;
+    color:#008800;
+    font-weight:bold;
+    white-space: nowrap;
+}
+.nomargin{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+.highest{
+    color:#dd4b39;
+    font-weight:bold;
+    margin-left:-10px;
+}
+
+.labox{
+    padding: 0 45px 0 0;
+}
+
+.la{
+    font-family: 'Gentium Basic', serif;
+    text-align:justify;
+    font-size: 1.20em;
+    padding: 0 0 0 0;
+}
+/*
+232f3e couleur bandeau amazon.
+*/
+.carousel { position:relative; min-height: 20px; height:auto !important; height: 20px;  background:url(http://devshoes2.des-chaussures.com/images/loader.gif) center center no-repeat; }
+.carousel .next,
+.carousel .prev { display:none; width:56px; height:56px; position:absolute; bottom:20px; left:50%; margin-top:-28px; z-index:9999; cursor:pointer; }
+.carousel .prev { margin-left:-60px; background:url(http://devshoes2.des-chaussures.com/images/prev.png) 0 0 no-repeat;  }
+.carousel .next { margin-right:-60px;  background:url(http://devshoes2.des-chaussures.com/images/next.png) 0 0 no-repeat; }
+.carousel li { display:none; }
+.carousel li img { width:100%; height:100%; }
+.paging { position:absolute; z-index:9998; }
+.paging > a { display:block; cursor:pointer; width:40px; height:40px; float:left; background:url(http://devshoes2.des-chaussures.com/images/dots.png) 0px -40px no-repeat; }
+.paging > a:hover,
+.paging > a.current { background:url(http://devshoes2.des-chaussures.com/images/dots.png) 0px 0px no-repeat;  }
+.badge { display:block; width:104px; height:104px; background:url(http://devshoes2.des-chaussures.com/images/badge.png) 0 0 no-repeat; z-index:9000; position:absolute; top:-3px; left:-3px; }
+img {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    -o-user-select: none;
+    user-select: none;
+}
+
+a{ color: #7ECA6D; }
+
+.btn-primary.gradient {
+    font-size:11px;
+    background: -moz-linear-gradient(top,  #33a6cc 50%, #0099cc 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#33a6cc), color-stop(50%,#0099cc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #33a6cc 50%,#0099cc 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33a6cc', endColorstr='#0099cc',GradientType=0 ); /* IE6-9 */
+}
+
+.voiroffre
+{
+    padding-right: 0px;
+    padding-left: 5px;
+}
