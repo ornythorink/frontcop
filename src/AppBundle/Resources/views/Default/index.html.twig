@@ -8,128 +8,251 @@
 
 
     <div class="container-fluid">
-        <!--  bandeau entete -->
-
-        <!-- fin bandeau entet -->
-
-        <!--left-->
-        <div class="col-sm-2">
-            <br/>
-            <div class="side panel panel-default">
-                <div class="panel-heading">
-                    Marques
-                </div>
-                <div class="panel-body">
-                    {% for  weight, key in brandFilter %}
-                        <a class="marque" data-param="{{ key.name }}">{{ key.name }} ( {{ key.weight }} )</a><br/>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="side panel panel-default">
-                <div class="panel-heading">
-                    Prix
-                </div>
-                <div class="panel-body">
-                    {% for  key, price in priceFilter %}
-                        <a class="price" data-param="{{ key }}">{{ price }} </a><br/>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <hr>
-        </div><!--/left-->
 
         <!--center-->
-
-        <div class="col-sm-8">
+        <div class="col-md-12">
             <div class="row">
-                <div class="col-xs-12">
-                    {% for item in items %}
-                        <div class="col-lg-3" data-price="{{ item.price }}" data-brand="{{ item.brand }}">
-                            <div id="{{ item.id }}" class="box panel panel-default">
-                                <div class="panel-heading"
-                                     style="background-color:white;color:grey;">{{ item.name|unicode(item.sourceId)|truncate(60, true, '...') }}</div>
-                                <div class="cartouche panel-body">
-                                    <div class="image">
-                                        <a target="_blank" href="/f/{{ item.id }}" rel="nofollow">
-                                            <img class="img-responsive errortest" src="{{ item.image }}" alt=""/>
-                                        </a>
-                                    </div>
-                                    <div class="brand">
-                                        {% if item.brand %}
-                                            {{ item.brand|truncate(60, true, '...') }}
-                                        {% elseif item.program %}
-                                            {{ item.program }}
-                                        {% else %}
-                                            indisponible
-                                        {% endif %}
-                                    </div>
-                                    <div class="panel-footer foot">
+                <div id="bloc1"  class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body degrade">
+                            <form class="form-inline">
+                                <span>Je cherche pour :</span>
+                                <br>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios1"
+                                               id="optionsRadios1" value="option1" checked>
+                                        Une femme
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios2"
+                                               id="optionsRadios2" value="option2" >
+                                        Un homme
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios3"
+                                               id="optionsRadios3" value="option3" >
+                                        Un ado
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios4"
+                                               id="optionsRadios4" value="option4" >
+                                        Un enfant
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios5"
+                                               id="optionsRadios5" value="option5" >
+                                        Un bébé
+                                    </label>
+                                </div>
+                                <br/>
+                                <br>
+                                <select multiple class="form-control">
+                                    <option>Des baskets</option>
+                                    <option>Des chaussures à talons</option>
+                                    <option>Des bottes</option>
+                                    <option>Des espadrilles</option>
+                                    <option>Des bottines</option>
+                                </select>
 
-                                        {% for offer in item.offers %}
-                                            <div class="col-lg-12 nomargin">
-                                                <div class="col-lg-4 nomargin lowest">
-                                                    {% if offer.promo is defined and offer.promo != null and offer.promo != offer.price %}
-                                                        <del>{{ offer.price|priceformatter }}</del>
-                                                        <br/>{{ offer.promo|priceformatter }}
-                                                    {% else %}
-                                                        {{ offer.price|priceformatter }}
-                                                    {% endif %}
-                                                </div>
-                                                <div class="col-lg-4 nomargin">
+                                <br/>
+                                <br>
+                                <span> Plutôt :</span>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios1"
+                                               id="optionsRadios1" value="option1" checked>
+                                        Chic
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios1"
+                                               id="optionsRadios1" value="option1" checked>
+                                        Casual
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios1"
+                                               id="optionsRadios1" value="option1" checked>
+                                        Decontracté
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios1"
+                                               id="optionsRadios1" value="option1" checked>
+                                        Sexy
+                                    </label>
+                                </div>
 
-                                                    {% if offer.logostore is defined and offer.logostore != '' %}
-                                                        <img class="img-responsive" src="{{ offer.logostore }}"/>
-                                                    {% else %}
-                                                        {% if logolist is defined and  logolist[offer.program] is defined %}
-                                                            <img class="img-responsive"
-                                                                 src="{{ logolist[offer.program] }}"/>
-                                                        {% else %}
-                                                            {{ offer.program }}
-                                                        {% endif %}
-                                                    {% endif %}
+                                <br>
+                                <br>
+                                <span>Pour un prix autour de :</span>
 
-                                                </div>
-                                                <div class="col-lg-4 voiroffre">
-                                                    <a class="btn btn-primary gradient " target="_blank"
-                                                       href="/f/{{ offer.id }}" rel="nofollow" role="button">Voir
-                                                        l'offre</a>
-                                                </div>
-                                                <hr>
-                                            </div>
-                                        {% endfor %}
+                                <div class="range">
+                                    <input type="range" name="range" min="1" max="300" value="50" onchange="range.value=value">
+                                    <output id="range">50 EUR</output>
+                                </div>
 
+                                <br/>
+
+                                <div class="form-group">
+                                    <div>
+                                        <button type="submit" class="btn btn-default">Chercher</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    {% endfor %}
-                    <div class="text-center">
-
-                        {% if app.environment == 'dev' %}
-                            dev
-                        {% else %}
-                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- test chaussures -->
-                            <ins class="adsbygoogle"
-                                 style="display:inline-block;width:728px;height:90px"
-                                 data-ad-client="ca-pub-8150493752884542"
-                                 data-ad-slot="1024469312"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        {% endif %}
                     </div>
-
                 </div>
-                <div class="pagerfanta text-center">
-                    {{ pagerfanta(pagination, 'twitter_bootstrap3') }}
+                <div id="bloc2"  class="col-md-4">
+                    <figure>
+                        <img src="{{ asset('bundles/app/img/equilibre.jpg') }}" class="img-responsive" alt="Responsive image">
+                        <figcaption>
+                            <h2>Le plus dur c'est pas d'acheter des chaussures ...
+                                C'est de choisir</h2>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div id="bloc3"  class="col-md-2"   >
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item" data-slide-number="0">
+                                <img class="img-rounded img-responsive" src="http://lorempixel.com/140/100">
+                            </div>
+                            <div class="item" data-slide-number="1">
+                                <img class="img-rounded img-responsive" src="http://lorempixel.com/140/100/technics/1">
+                            </div>
+                            <div class="item" data-slide-number="2">
+                                <img class="img-rounded img-responsive" src="http://lorempixel.com/140/100/business/1">
+                            </div>
+                            <div class="item" data-slide-number="3">
+                                <img class="img-rounded img-responsive" src="http://lorempixel.com/140/100/city">
+                            </div>
+                            <div class="item" data-slide-number="4">
+                                <img class="img-rounded img-responsive" src="http://lorempixel.com/140/100/city/1">
+                            </div>
+                            <div class="item" data-slide-number="5">
+                                <img class="img-rounded img-responsive" src="http://lorempixel.com/140/100">
+                            </div>
+                        </div><!--/carousel-inner-->
+                    </div><!--/carousel-->
+                    <ul class="carousel-controls-mini list-inline text-center">
+                        <li><a href="#myCarousel" data-slide="prev">‹</a></li>
+                        <li><a href="#myCarousel" data-slide="next">›</a></li>
+                    </ul><!--/carousel-controls-->
+                </div><!--/col-->
+                <div class="col-md-2" id="carousel-text"></div>
+                    <div style="display:none;" id="slide-content">
+                        <div id="slide-content-0">
+                            <h5>Slide One</h5>
+
+                            <p>This is mini slider / carousel.</p> <small>October 13 2013 - <a href="#">Read more</a></small>
+
+                        </div>
+                        <div id="slide-content-1">
+                            <h5>Slide Two</h5>
+
+                            <p>Mini carousel with Bootstrap</p> <small>October 15 2013 - <a href="#">Read more</a></small>
+
+                        </div>
+                        <div id="slide-content-2">
+                            <h5>Slider Three</h5>
+
+                            <p>Facebook-style paged image slider</p> <small>October 19 2013 - <a href="#">Read more</a></small>
+
+                        </div>
+                        <div id="slide-content-3">
+                            <h5>Slider Four</h5>
+
+                            <p>Lorem Ipsum Dolor</p> <small>October 22 2013 - <a href="#">Read more</a></small>
+
+                        </div>
+                        <div id="slide-content-4">
+                            <h5>Slider Five</h5>
+
+                            <p>Lorem Ipsum Dolor</p> <small>October 25 2013 - <a href="#">Read more</a></small>
+
+                        </div>
+                        <div id="slide-content-5">
+                            <h5>Slider Six</h5>
+
+                            <p>Lorem Ipsum Dolor</p>
+                            <p class="sub-text">October 24 2012 - <a href="#">Read more</a>
+                            </p>
+                        </div>
+                    </div><!--/slide-content-->
                 </div>
             </div>
-            <hr>
+            <div class="row">
+                <div id="bloc5" class="col-md-4">
+                    <div class="imagecaption">
+                        <img src="{{ asset('bundles/app/img/chaussures-homme.jpg') }}" class="img-responsive" />
+                        <h2>Chaussures hommes</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque nisi ac ligula feugiat suscipit. In viverra ex sapien, vel scelerisque arcu sodales ac. Morbi ullamcorper vulputate nisi, ut finibus nulla. Vestibulum quis eros magna. Donec non orci a nisl bibendum tincidunt. Donec eget augue nunc. Pellentesque eu purus vitae justo accumsan eleifend. Aliquam viverra maximus varius. Donec ultricies odio mi, in cursus urna ullamcorper vel. Ut et elementum eros. In pulvinar nunc sit amet eros venenatis ornare. Mauris non arcu lacinia, dapibus tortor sit amet, viverra tortor. Nullam vestibulum libero tristique ligula ornare fringilla. Curabitur in quam quis lectus blandit finibus eu viverra purus. Vestibulum accumsan rutrum risus vitae egestas. Duis faucibus ullamcorper ligula non dignissim.
+
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ullamcorper nulla a urna posuere rhoncus. Fusce aliquet, mauris sit amet malesuada bibendum, lacus turpis pulvinar risus, ut auctor leo risus eu mauris. Sed egestas tellus nec ipsum aliquet posuere. Mauris id sapien a ante maximus tincidunt eu ac velit. Praesent libero ipsum, ullamcorper id elementum sit amet, porttitor eget tortor. Vivamus auctor neque quam, nec laoreet mauris sollicitudin ac. Etiam sit amet augue mi. Phasellus mattis mauris finibus vehicula cursus. Integer non felis lectus.
+
+                    Donec posuere, eros et mattis congue, nulla dolor condimentum metus, dignissim venenatis eros risus non nulla. Suspendisse fermentum vel dui vel pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel mattis odio. Mauris et risus ut arcu posuere congue. Aliquam vel efficitur ligula. Nunc porta placerat diam, nec malesuada orci tincidunt nec. Sed accumsan orci eget volutpat lacinia. Mauris sit amet elementum odio, eu vestibulum est. Nunc vulputate tristique placerat. Etiam faucibus iaculis tellus, eu iaculis magna mollis sed. Ut vitae auctor ligula, hendrerit feugiat nunc. Ut maximus ultricies ex ac viverra.
+
+                </div>
+                <div class="col-md-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque nisi ac ligula feugiat suscipit. In viverra ex sapien, vel scelerisque arcu sodales ac. Morbi ullamcorper vulputate nisi, ut finibus nulla. Vestibulum quis eros magna. Donec non orci a nisl bibendum tincidunt. Donec eget augue nunc. Pellentesque eu purus vitae justo accumsan eleifend. Aliquam viverra maximus varius. Donec ultricies odio mi, in cursus urna ullamcorper vel. Ut et elementum eros. In pulvinar nunc sit amet eros venenatis ornare. Mauris non arcu lacinia, dapibus tortor sit amet, viverra tortor. Nullam vestibulum libero tristique ligula ornare fringilla. Curabitur in quam quis lectus blandit finibus eu viverra purus. Vestibulum accumsan rutrum risus vitae egestas. Duis faucibus ullamcorper ligula non dignissim.
+
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ullamcorper nulla a urna posuere rhoncus. Fusce aliquet, mauris sit amet malesuada bibendum, lacus turpis pulvinar risus, ut auctor leo risus eu mauris. Sed egestas tellus nec ipsum aliquet posuere. Mauris id sapien a ante maximus tincidunt eu ac velit. Praesent libero ipsum, ullamcorper id elementum sit amet, porttitor eget tortor. Vivamus auctor neque quam, nec laoreet mauris sollicitudin ac. Etiam sit amet augue mi. Phasellus mattis mauris finibus vehicula cursus. Integer non felis lectus.
+
+                    Donec posuere, eros et mattis congue, nulla dolor condimentum metus, dignissim venenatis eros risus non nulla. Suspendisse fermentum vel dui vel pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel mattis odio. Mauris et risus ut arcu posuere congue. Aliquam vel efficitur ligula. Nunc porta placerat diam, nec malesuada orci tincidunt nec. Sed accumsan orci eget volutpat lacinia. Mauris sit amet elementum odio, eu vestibulum est. Nunc vulputate tristique placerat. Etiam faucibus iaculis tellus, eu iaculis magna mollis sed. Ut vitae auctor ligula, hendrerit feugiat nunc. Ut maximus ultricies ex ac viverra.
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque nisi ac ligula feugiat suscipit. In viverra ex sapien, vel scelerisque arcu sodales ac. Morbi ullamcorper vulputate nisi, ut finibus nulla. Vestibulum quis eros magna. Donec non orci a nisl bibendum tincidunt. Donec eget augue nunc. Pellentesque eu purus vitae justo accumsan eleifend. Aliquam viverra maximus varius. Donec ultricies odio mi, in cursus urna ullamcorper vel. Ut et elementum eros. In pulvinar nunc sit amet eros venenatis ornare. Mauris non arcu lacinia, dapibus tortor sit amet, viverra tortor. Nullam vestibulum libero tristique ligula ornare fringilla. Curabitur in quam quis lectus blandit finibus eu viverra purus. Vestibulum accumsan rutrum risus vitae egestas. Duis faucibus ullamcorper ligula non dignissim.
+
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ullamcorper nulla a urna posuere rhoncus. Fusce aliquet, mauris sit amet malesuada bibendum, lacus turpis pulvinar risus, ut auctor leo risus eu mauris. Sed egestas tellus nec ipsum aliquet posuere. Mauris id sapien a ante maximus tincidunt eu ac velit. Praesent libero ipsum, ullamcorper id elementum sit amet, porttitor eget tortor. Vivamus auctor neque quam, nec laoreet mauris sollicitudin ac. Etiam sit amet augue mi. Phasellus mattis mauris finibus vehicula cursus. Integer non felis lectus.
+
+                    Donec posuere, eros et mattis congue, nulla dolor condimentum metus, dignissim venenatis eros risus non nulla. Suspendisse fermentum vel dui vel pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel mattis odio. Mauris et risus ut arcu posuere congue. Aliquam vel efficitur ligula. Nunc porta placerat diam, nec malesuada orci tincidunt nec. Sed accumsan orci eget volutpat lacinia. Mauris sit amet elementum odio, eu vestibulum est. Nunc vulputate tristique placerat. Etiam faucibus iaculis tellus, eu iaculis magna mollis sed. Ut vitae auctor ligula, hendrerit feugiat nunc. Ut maximus ultricies ex ac viverra.
+                </div>
+                <div class="col-md-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque nisi ac ligula feugiat suscipit. In viverra ex sapien, vel scelerisque arcu sodales ac. Morbi ullamcorper vulputate nisi, ut finibus nulla. Vestibulum quis eros magna. Donec non orci a nisl bibendum tincidunt. Donec eget augue nunc. Pellentesque eu purus vitae justo accumsan eleifend. Aliquam viverra maximus varius. Donec ultricies odio mi, in cursus urna ullamcorper vel. Ut et elementum eros. In pulvinar nunc sit amet eros venenatis ornare. Mauris non arcu lacinia, dapibus tortor sit amet, viverra tortor. Nullam vestibulum libero tristique ligula ornare fringilla. Curabitur in quam quis lectus blandit finibus eu viverra purus. Vestibulum accumsan rutrum risus vitae egestas. Duis faucibus ullamcorper ligula non dignissim.
+
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ullamcorper nulla a urna posuere rhoncus. Fusce aliquet, mauris sit amet malesuada bibendum, lacus turpis pulvinar risus, ut auctor leo risus eu mauris. Sed egestas tellus nec ipsum aliquet posuere. Mauris id sapien a ante maximus tincidunt eu ac velit. Praesent libero ipsum, ullamcorper id elementum sit amet, porttitor eget tortor. Vivamus auctor neque quam, nec laoreet mauris sollicitudin ac. Etiam sit amet augue mi. Phasellus mattis mauris finibus vehicula cursus. Integer non felis lectus.
+
+                    Donec posuere, eros et mattis congue, nulla dolor condimentum metus, dignissim venenatis eros risus non nulla. Suspendisse fermentum vel dui vel pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel mattis odio. Mauris et risus ut arcu posuere congue. Aliquam vel efficitur ligula. Nunc porta placerat diam, nec malesuada orci tincidunt nec. Sed accumsan orci eget volutpat lacinia. Mauris sit amet elementum odio, eu vestibulum est. Nunc vulputate tristique placerat. Etiam faucibus iaculis tellus, eu iaculis magna mollis sed. Ut vitae auctor ligula, hendrerit feugiat nunc. Ut maximus ultricies ex ac viverra.
+
+                </div>
+                <div class="col-md-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque nisi ac ligula feugiat suscipit. In viverra ex sapien, vel scelerisque arcu sodales ac. Morbi ullamcorper vulputate nisi, ut finibus nulla. Vestibulum quis eros magna. Donec non orci a nisl bibendum tincidunt. Donec eget augue nunc. Pellentesque eu purus vitae justo accumsan eleifend. Aliquam viverra maximus varius. Donec ultricies odio mi, in cursus urna ullamcorper vel. Ut et elementum eros. In pulvinar nunc sit amet eros venenatis ornare. Mauris non arcu lacinia, dapibus tortor sit amet, viverra tortor. Nullam vestibulum libero tristique ligula ornare fringilla. Curabitur in quam quis lectus blandit finibus eu viverra purus. Vestibulum accumsan rutrum risus vitae egestas. Duis faucibus ullamcorper ligula non dignissim.
+
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ullamcorper nulla a urna posuere rhoncus. Fusce aliquet, mauris sit amet malesuada bibendum, lacus turpis pulvinar risus, ut auctor leo risus eu mauris. Sed egestas tellus nec ipsum aliquet posuere. Mauris id sapien a ante maximus tincidunt eu ac velit. Praesent libero ipsum, ullamcorper id elementum sit amet, porttitor eget tortor. Vivamus auctor neque quam, nec laoreet mauris sollicitudin ac. Etiam sit amet augue mi. Phasellus mattis mauris finibus vehicula cursus. Integer non felis lectus.
+
+                    Donec posuere, eros et mattis congue, nulla dolor condimentum metus, dignissim venenatis eros risus non nulla. Suspendisse fermentum vel dui vel pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel mattis odio. Mauris et risus ut arcu posuere congue. Aliquam vel efficitur ligula. Nunc porta placerat diam, nec malesuada orci tincidunt nec. Sed accumsan orci eget volutpat lacinia. Mauris sit amet elementum odio, eu vestibulum est. Nunc vulputate tristique placerat. Etiam faucibus iaculis tellus, eu iaculis magna mollis sed. Ut vitae auctor ligula, hendrerit feugiat nunc. Ut maximus ultricies ex ac viverra.
+
+
+                </div>
+                <div class="col-md-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque nisi ac ligula feugiat suscipit. In viverra ex sapien, vel scelerisque arcu sodales ac. Morbi ullamcorper vulputate nisi, ut finibus nulla. Vestibulum quis eros magna. Donec non orci a nisl bibendum tincidunt. Donec eget augue nunc. Pellentesque eu purus vitae justo accumsan eleifend. Aliquam viverra maximus varius. Donec ultricies odio mi, in cursus urna ullamcorper vel. Ut et elementum eros. In pulvinar nunc sit amet eros venenatis ornare. Mauris non arcu lacinia, dapibus tortor sit amet, viverra tortor. Nullam vestibulum libero tristique ligula ornare fringilla. Curabitur in quam quis lectus blandit finibus eu viverra purus. Vestibulum accumsan rutrum risus vitae egestas. Duis faucibus ullamcorper ligula non dignissim.
+
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec ullamcorper nulla a urna posuere rhoncus. Fusce aliquet, mauris sit amet malesuada bibendum, lacus turpis pulvinar risus, ut auctor leo risus eu mauris. Sed egestas tellus nec ipsum aliquet posuere. Mauris id sapien a ante maximus tincidunt eu ac velit. Praesent libero ipsum, ullamcorper id elementum sit amet, porttitor eget tortor. Vivamus auctor neque quam, nec laoreet mauris sollicitudin ac. Etiam sit amet augue mi. Phasellus mattis mauris finibus vehicula cursus. Integer non felis lectus.
+
+                    Donec posuere, eros et mattis congue, nulla dolor condimentum metus, dignissim venenatis eros risus non nulla. Suspendisse fermentum vel dui vel pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam vel mattis odio. Mauris et risus ut arcu posuere congue. Aliquam vel efficitur ligula. Nunc porta placerat diam, nec malesuada orci tincidunt nec. Sed accumsan orci eget volutpat lacinia. Mauris sit amet elementum odio, eu vestibulum est. Nunc vulputate tristique placerat. Etiam faucibus iaculis tellus, eu iaculis magna mollis sed. Ut vitae auctor ligula, hendrerit feugiat nunc. Ut maximus ultricies ex ac viverra.
+                </div>
+            </div>
         </div><!--/center-->
         <br/>
 
