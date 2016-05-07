@@ -2,6 +2,8 @@
 body {
     padding-top: 70px;
     font-family:"Lavender Script Pro Regular";
+    /*background-image: url("http://127.0.0.1:8080/bundles/app/img/paper.jpg");*/
+    background-color: #eee;
 }
 #tagcloud {
     width:80%;
@@ -141,8 +143,34 @@ figcaption {
 
 figcaption h2{
     font-family:"Lavender Script Pro Regular";
-    font-size: 1em;
+    font-size: 1.2em;
 }
+
+.pub-container
+{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.pub-container .iframe
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#bloc6 a img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-right:-10px;
+}
+
 
 /*
 232f3e couleur bandeau amazon.
